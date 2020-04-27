@@ -14,7 +14,6 @@ const BootcampSchema = mongoose.Schema({
   description: {
     type: String,
     required: [true, "Please add a description"],
-    unique: true,
     trim: true,
     maxLength: [50, "Description can not be more than 50 characters"],
   },
@@ -101,7 +100,12 @@ const BootcampSchema = mongoose.Schema({
   createdAt: {
       type: Date,
       default: Date.now
-  }
+  },
+  user: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'User',
+    required: true
+}
 }, {
   toJSON: { virtuals: true },
   toObject: { virtuals: true }
