@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const path = require('path');
 const express = require("express");
 const dotenv = require("dotenv");
@@ -18,7 +19,17 @@ const connectDB = require("./config/db");
 dotenv.config({ path: "./config/config.env" });
 
 // Connect to database
-connectDB();
+// connectDB();
+
+// Mongoose Connection
+mongoose.connect(process.env.MONGOOSE_URI, {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
+  useUnifiedTopology: true
+})
+  .then(res => console.log("Mongoose Connection Established!".blue.inverse))
+  .catch(err => console.log("Something Went Wrong!"));
 
 // Route Files
 const bootcamps = require("./routes/bootcamps");
