@@ -21,16 +21,6 @@ dotenv.config({ path: "./config/config.env" });
 // Connect to database
 connectDB();
 
-// Mongoose Connection
-mongoose.connect(process.env.MONGOOSE_URI, {
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useFindAndModify: false,
-  useUnifiedTopology: true
-})
-  .then(res => console.log("Mongoose Connection Established!".blue.inverse))
-  .catch(err => console.log("Something Went Wrong!"));
-
 // Route Files
 const bootcamps = require("./routes/bootcamps");
 const courses = require("./routes/courses");
@@ -86,10 +76,6 @@ app.use("/api/v1/courses", courses);
 app.use("/api/v1/auth", auth);
 app.use("/api/v1/users", users);
 app.use("/api/v1/reviews", reviews);
-
-app.use('/', (req, res) => {
-  res.sendFile('./public/index.html');
-});
 
 // Custom error handler middleware
 app.use(errorHandler);
