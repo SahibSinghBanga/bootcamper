@@ -87,6 +87,10 @@ app.use("/api/v1/auth", auth);
 app.use("/api/v1/users", users);
 app.use("/api/v1/reviews", reviews);
 
+app.use('/', (req, res) => {
+  res.sendFile('./public/index.html');
+});
+
 // Custom error handler middleware
 app.use(errorHandler);
 
