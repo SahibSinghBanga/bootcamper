@@ -19,7 +19,7 @@ const connectDB = require("./config/db");
 dotenv.config({ path: "./config/config.env" });
 
 // Connect to database
-// connectDB();
+connectDB();
 
 // Mongoose Connection
 mongoose.connect(process.env.MONGOOSE_URI, {
